@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello</title>
-    <url>/2020/04/06/Hello/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Hello</category>
-      </categories>
-      <tags>
-        <tag>Hello</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PixelStreaming 局域网及公有云部署全流程记录</title>
     <url>/2020/04/10/PixelStreaming-Deployment/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。</p>
@@ -23,10 +12,13 @@
 <p><strong>PixelStreaming插件</strong>：负责视频编码，将视频与音频压缩到媒体流中，并发送到WebRTC代理服务器。</p>
 <p><strong>WebRTC代理服务器</strong>：负责将像素流送插件产生的媒体流通过直接的点对点连接转发给查看者。</p>
 <p><strong>Signaling和Web服务器</strong>：负责在查看者和WebRTC代理服务器之间建立连接，为查看者提供播放媒体流内容的HTML和JavaScript环境。</p>
-<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg" alt="PixelStreamingFramework"> </p>
+<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg" alt="PixelStreamingFramework" title="4.21 PixelStreaming原理"> </p>
 <h2 id="UE4-24之后版本"><a href="#UE4-24之后版本" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h2><p>UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工作流程变为了由Signaling和Web服务器充当桥梁，连接UE4应用和Web浏览器。</p>
-<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreaming4.24.jpg" alt="PixelStreaming4.24"></p>
-<h1 id="局域网部署"><a href="#局域网部署" class="headerlink" title="局域网部署"></a>局域网部署</h1><h2 id="单个实例配置"><a href="#单个实例配置" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><h3 id="UE4-24以前版本-1"><a href="#UE4-24以前版本-1" class="headerlink" title="UE4.24以前版本"></a>UE4.24以前版本</h3><ol>
+<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreaming4.24.jpg" alt="PixelStreaming4.24" title="4.24 PixelStreaming原理"></p>
+<h1 id="局域网部署"><a href="#局域网部署" class="headerlink" title="局域网部署"></a>局域网部署</h1><h2 id="单个实例配置"><a href="#单个实例配置" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><ul>
+<li><strong>UE4.24以前版本：</strong></li>
+</ul>
+<ol>
 <li><p>运行WebRTC代理服务器</p>
 <p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin\Start_WebRTCProxy.bat</p>
 </li>
@@ -42,7 +34,10 @@
 <p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为启动SignallingWebServer时设置的publicIp值)</p>
 </li>
 </ol>
-<h3 id="UE4-24之后版本-1"><a href="#UE4-24之后版本-1" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h3><ol>
+<ul>
+<li><strong>UE4.24之后版本：</strong></li>
+</ul>
+<ol>
 <li><p>运行SignallingWeb服务器</p>
 <p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
 </li>
@@ -55,7 +50,10 @@
 </li>
 </ol>
 <p><strong>相关参数说明：</strong></p>
-<h2 id="多个实例配置"><a href="#多个实例配置" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><h3 id="UE4-24之后版本-2"><a href="#UE4-24之后版本-2" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h3><ol>
+<h2 id="多个实例配置"><a href="#多个实例配置" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ul>
+<li><strong>UE4.24之后版本：</strong></li>
+</ul>
+<ol>
 <li><p>启动Matchmaker/run.bat</p>
 <p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：–httpPort 90 –matchmakerPort 9999</p>
 </li>
@@ -70,12 +68,92 @@
 <p><strong>[实例2]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</p>
 </li>
 <li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong> <a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接：</p>
-<p>**[网址1] **<a href="http://127.0.0.1/MakeReal3DCloud.htm" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
+<p><strong>[网址1]</strong> <a href="http://127.0.0.1/MakeReal3DCloud.htm" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
 <p><strong>[网址2]</strong> <a href="http://127.0.0.1:81" target="_blank" rel="noopener">http://127.0.0.1:81</a></p>
 <p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
 </li>
 </ol>
-<h1 id="公有云部署"><a href="#公有云部署" class="headerlink" title="公有云部署"></a>公有云部署</h1><h2 id="多个实例配置-1"><a href="#多个实例配置-1" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ol>
+<h1 id="公有云部署"><a href="#公有云部署" class="headerlink" title="公有云部署"></a>公有云部署</h1><h2 id="云服务器环境配置"><a href="#云服务器环境配置" class="headerlink" title="云服务器环境配置"></a>云服务器环境配置</h2><blockquote>
+<p> 以华为云为例，其他云平台情况大致相同，腾讯云、阿里云可以直接运行像素流送实例，可省略部分步骤。</p>
+</blockquote>
+<ul>
+<li><p><strong>云服务器系统信息：</strong><br>DirectX版本: DirectX 11<br>CPU: Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz (16 CPUs), ~2.3GHz<br>GPU: NVIDIA Tesla M60 </p>
+</li>
+<li><p>防火墙设置</p>
+<p>默认防火墙设置可能会禁止像素流所用到的端口的通信。<strong>快速测试时，</strong>在控制面板 &gt;&gt; 防火墙设置中先关闭防火墙。<strong>正式使用时，</strong>应该在高级防火墙设置中，创建相应的规则，将需要使用的协议或者端口打开，也可以将像素流应用及其他相关应用都加入到白名单中去。</p>
+<img src="/2020/04/10/PixelStreaming-Deployment/Firewall.jpg" alt="防火墙设置" style="zoom:40%;">
+</li>
+<li><p>安装.NET Framework3.5</p>
+<p>cmd命令行 &gt;&gt; 输入servermanager &gt;&gt; 回车 &gt;&gt; 选择管理&gt;&gt;添加角色和功能 &gt;&gt; Next &gt;&gt; 功能 &gt;&gt; 选择.NET Framework3.5 &gt;&gt; 点击安装</p>
+<img src="/2020/04/10/PixelStreaming-Deployment/NETFramework3.5.jpg" alt="NET Framework3.5安装" style="zoom:30%;">
+</li>
+<li><p>启动声音服务</p>
+<p>cmd命令行 &gt;&gt; services.msc &gt;&gt; 将Windows Audio以及Windows Audio Endpoint Builder服务启动</p>
+<img src="/2020/04/10/PixelStreaming-Deployment/AudioService.jpg" alt="启动声音服务" style="zoom:40%;">
+</li>
+<li><p>设置远程桌面链接远程音频</p>
+<img src="/2020/04/10/PixelStreaming-Deployment/RemoteAudio.jpg" alt="远程音频" style="zoom:40%;">
+</li>
+<li><p>关闭IE的安全配置</p>
+<p>Windows Server 默认设置是不允许从浏览器下载内容的，所以要通过浏览器下载任何软件，你需要先在ServerManager里关闭IE Enhanced Security Configuration。当然安全起见，当下载完需要的软件后，还是建议重新启用以增强系统的安全性。</p>
+<img src="/2020/04/10/PixelStreaming-Deployment/IEConfig.jpg" alt="IE安全配置" style="zoom:30%;">
+
+</li>
+</ul>
+<h2 id="PixelStreaming环境配置"><a href="#PixelStreaming环境配置" class="headerlink" title="PixelStreaming环境配置"></a>PixelStreaming环境配置</h2><h3 id="必要环境配置"><a href="#必要环境配置" class="headerlink" title="必要环境配置"></a>必要环境配置</h3><ol>
+<li>安装Node.js</li>
+<li>安装Unreal Engine4.24</li>
+</ol>
+<h3 id="vGPU驱动"><a href="#vGPU驱动" class="headerlink" title="vGPU驱动"></a>vGPU驱动</h3><blockquote>
+<p><strong>云服务器运行Unreal Engine4.24 PixelStreaming实例必须安装vGPU/GRID驱动</strong><br><strong>其他云平台默认预装了vGPU/GRID最新驱动，无需后续步骤。</strong><br><strong>后续步骤为华为云服务器上GRID/vGPU驱动的安装步骤，安装此驱动是为了解决云服务器运行Unreal Engine4.24 PixelStreaming应用程序实例时，有NvEnc的相关报错。运行4.21版本的像素流送应用程序实例无此问题。</strong></p>
+</blockquote>
+<img src="/2020/04/10/PixelStreaming-Deployment/NvEncError.jpg" alt="NvEnc Error" style="zoom:60%;">
+
+<ol>
+<li><p>安装华为云提供的NVIDIA驱动</p>
+<p>华为云Window公共镜像中有该驱动的安装文件，文件目录C:\NVIDIA\369.71，点击Setup.exe安装即可。<strong>此步骤是为了先安装，后更新。直接安装来自NVIDIA License Dashboard下载的GRID/vGPU最新驱动，会安装失败。</strong></p>
+<img src="/2020/04/10/PixelStreaming-Deployment/vGPU369.jpg" alt="华为云提供的vGPU驱动版本安装" style="zoom:50%;">
+</li>
+</ol>
+<ul>
+<li><strong>步骤2、3只为了下载到vGPU/GRID最新驱动，若有其他方式获取到GRID最新驱动软件包可忽略此步骤</strong></li>
+</ul>
+<ol start="2">
+<li><p>申请GRID/vGPU驱动License</p>
+<p>有申请License的步骤是因为，我只知道这一种获取最新的驱动软件包的方式，就是通过申请License的方式获得NVIDIA邮件提供的链接，进入License Dashboard下载。</p>
+<p><a href="https://enterpriseproductregistration.nvidia.com/?LicType=EVAL&ProductFamily=vGPU" target="_blank" rel="noopener">NVIDIA官网申请GRID驱动的免费License</a> （申请需要企业邮箱）</p>
+<p><strong>重要说明：</strong>N卡的图形功能不需要License，仅计算功能需要License，PixelStreaming只用到视频编码，不需要计算功能，所以没必要配置License。在这之前我并不知道这一点，所以走了很多弯路。虽然对于PixelStreaming来说不需要，不过关于获取vGPU/GRID驱动 License、安装License Server、配置License等详细步骤以及问题解决我将会在另一篇文章说明，提供给有需要的朋友参考。</p>
+</li>
+<li><p>更新GRID vGPU驱动</p>
+<p>通过License申请成功的邮件所提供的链接<a href="https://ui.licensing.nvidia.com" target="_blank" rel="noopener">NVIDIA License仪表盘</a> ，下载到vGPU/GRID驱动最新的软件包，如”NVIDIA-GRID-Windows-418.130-426.52.zip“，安装更新即可。</p>
+</li>
+<li><p>到此，运行Unreal Engine4.24 PixelStreaming应用程序实例，运行正常，没有报错。</p>
+</li>
+</ol>
+<h2 id="单个实例配置-1"><a href="#单个实例配置-1" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><ol>
+<li><p>启动STUN服务 Start_STUNServer.bat</p>
+<p><strong>目录：</strong>\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_STUNServer.bat</p>
+</li>
+<li><p>启动Signalling和Web服务器 runAWS.bat</p>
+<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS.bat</p>
+</li>
+<li><p>启动应用程序实例，具体启动参数参考局域网部署步骤。</p>
+</li>
+</ol>
+<blockquote>
+<p>如果上述步骤Web浏览器无法查看视频流送，则换用TURN服务部署方法。</p>
+</blockquote>
+<ol>
+<li><p>启动TURN服务 Start_AWS_TURNServer.bat</p>
+<p><strong>目录：</strong>\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_AWS_TURNServer.bat</p>
+</li>
+<li><p>启动Signalling和Web服务器 runAWS_WithTURN.bat</p>
+<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
+</li>
+<li><p>启动应用程序，具体启动参数参考局域网部署步骤。</p>
+</li>
+</ol>
+<h2 id="多个实例配置-1"><a href="#多个实例配置-1" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ol>
 <li><p>启动Start_AWS_TURNServer.bat</p>
 </li>
 <li><p>启动Matchmaker/run.bat</p>
@@ -108,6 +186,7 @@
 <p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
 </li>
 </ol>
+<hr>
 ]]></content>
       <categories>
         <category>Unreal Engine</category>
@@ -116,6 +195,17 @@
         <tag>UE4</tag>
         <tag>PixelStreaming</tag>
         <tag>云渲染</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello</title>
+    <url>/2020/04/06/Hello/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Hello</category>
+      </categories>
+      <tags>
+        <tag>Hello</tag>
       </tags>
   </entry>
 </search>
