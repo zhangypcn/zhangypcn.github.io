@@ -1,22 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello</title>
+    <url>/2020/04/06/Hello/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Hello</category>
+      </categories>
+      <tags>
+        <tag>Hello</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PixelStreaming 局域网及公有云部署全流程记录</title>
     <url>/2020/04/10/PixelStreaming-Deployment/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。</p>
 <a id="more"></a>
 
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>PixelStreaming自UnrealEngine4.21版本开始提供测试，能够向Web浏览器发送高质量的交互场景内容，让移动设备和轻量级网页浏览器能够轻松浏览基于UE4 的桌面可视化内容。用户通过链接即可访问，并且提供了多人同时访问或单人独立访问的自由部署方案，将像素流送项目部署在云平台服务器上，在高性能、高负载的云计算平台以及高速率、低延迟的5G技术的支持下，实现多人、异地、多终端的远程协同。</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>PixelStreaming自UnrealEngine4.21版本开始提供测试，能够向Web浏览器发送高质量的可视化内容，让移动设备和轻量级Web浏览器能够轻松浏览工作站品质的3D图形。用户通过链接即可访问，并且提供了多人同时访问或单人独立访问的自由部署方案，将像素流送项目部署在云平台服务器上，在高性能、高负载的云计算平台以及高速率、低延迟的5G技术的支持下，实现多人、异地、多终端的远程协同。</p>
 <p>PixelStreaming技术可以为汽车制造商以及经销商提供一种通用的线上展厅解决方案，为汽车客户带来方便快捷的高质量汽车交互体验。以此解决方案为思路，可拓展至工业产品研发过程中，对工业数据进行3D可视化，创建交互式内容，以进行不同角色的设计人员在异地辅助决策，缩短产品设计和评审时间，从而减少产品研发过程中的资金及时间成本，显著提高工作效率。另外在智慧城市、智慧交通、数字地产等行业，PixelStreaming也有很大的用武之地。</p>
-<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><p>PixelStreaming通过</p>
-<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg" alt="PixelStreamingFramework"></p>
-<p>有三大服务器</p>
-<p>SignalingWebServer     信令和eb服务器</p>
-<p>Matchmaker            配对服务器</p>
-<p>WebRTCProxy         WebRTC代理服务（官方已经移除）</p>
-<p>· 像素流送插件——此插件在虚幻引擎内部运行。它使用H.264视频压缩对渲染的每一帧最终结果编码，将这些视频帧与游戏音频一起压缩到媒体流中，发送到WebRTC代理服务器。</p>
-<p>· WebRTC代理服务器——WebRTC代理服务器负责将像素流送插件产生的媒体流通过直接的点对点连接转发给多个查看者。</p>
-<p>· 信令和Web服务器——信令和Web服务器负责在查看者与WebRTC代理服务器之间协商建立连接，并为查看者提供播放媒体流的HTML和JavaScript环境。</p>
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><h2 id="UE4-24以前版本"><a href="#UE4-24以前版本" class="headerlink" title="UE4.24以前版本"></a>UE4.24以前版本</h2><p>UE4.24版本之前，PixelStreaming通过配置PixelStreaming插件、WebRTC代理服务器、Signaling和Web服务器来工作。</p>
+<p><strong>PixelStreaming插件</strong>：负责视频编码，将视频与音频压缩到媒体流中，并发送到WebRTC代理服务器。</p>
+<p><strong>WebRTC代理服务器</strong>：负责将像素流送插件产生的媒体流通过直接的点对点连接转发给查看者。</p>
+<p><strong>Signaling和Web服务器</strong>：负责在查看者和WebRTC代理服务器之间建立连接，为查看者提供播放媒体流内容的HTML和JavaScript环境。</p>
+<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg" alt="PixelStreamingFramework"> </p>
+<h2 id="UE4-24之后版本"><a href="#UE4-24之后版本" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h2><p>UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工作流程变为了由Signaling和Web服务器充当桥梁，连接UE4应用和Web浏览器。</p>
+<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreaming4.24.jpg" alt="PixelStreaming4.24"></p>
+<h1 id="局域网部署"><a href="#局域网部署" class="headerlink" title="局域网部署"></a>局域网部署</h1><h2 id="单个实例配置"><a href="#单个实例配置" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><h3 id="UE4-24以前版本-1"><a href="#UE4-24以前版本-1" class="headerlink" title="UE4.24以前版本"></a>UE4.24以前版本</h3><ol>
+<li><p>运行WebRTC代理服务器</p>
+<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin\Start_WebRTCProxy.bat</p>
+</li>
+<li><p>运行SignallingWeb服务器</p>
+<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
+<p><strong>启动参数：</strong> –publicIp 127.0.0.1（此IP为客户端访问地址，根据情况修改，如公网：–publicIp 49.xx.xx.42）</p>
+</li>
+<li><p>运行应用程序实例</p>
+<p><strong>目录：</strong>/WindowsNoEditor/PixelStreamingDemo.exe</p>
+<p><strong>启动参数：</strong> -AudioMixer -PixelStreamingPort=8124 -RenderOffScreen</p>
+</li>
+<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）访问网页链接</p>
+<p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为启动SignallingWebServer时设置的publicIp值)</p>
+</li>
+</ol>
+<h3 id="UE4-24之后版本-1"><a href="#UE4-24之后版本-1" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h3><ol>
+<li><p>运行SignallingWeb服务器</p>
+<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
+</li>
+<li><p>运行应用程序实例（PixelStreamingIP为客户端访问地址，根据情况修改，如公网：-PixelStreamingIP=49.4.27.42）</p>
+<p><strong>目录：</strong>/WindowsNoEditor/PixelStreamingDemo.exe**</p>
+<p><strong>启动参数：</strong>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
+</li>
+<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）访问网页链接</p>
+<p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为运行应用程序实例时设置的PixelStreamingIP)</p>
+</li>
+</ol>
+<p><strong>相关参数说明：</strong></p>
+<h2 id="多个实例配置"><a href="#多个实例配置" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><h3 id="UE4-24之后版本-2"><a href="#UE4-24之后版本-2" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h3><ol>
+<li><p>启动Matchmaker/run.bat</p>
+<p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：–httpPort 90 –matchmakerPort 9999</p>
+</li>
+<li><p>启动SignallingWebServer_run.bat</p>
+<p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
+<p><strong>[服务器1]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 80 –streamerPort = 8888</p>
+<p><strong>[服务器2]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 81 –streamerPort = 8887</p>
+</li>
+<li><p>启动PixelStreaming.exe应用程序实例</p>
+<p><strong>启动参数：</strong></p>
+<p><strong>[实例1]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
+<p><strong>[实例2]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</p>
+</li>
+<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong> <a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接：</p>
+<p>**[网址1] **<a href="http://127.0.0.1/MakeReal3DCloud.htm" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
+<p><strong>[网址2]</strong> <a href="http://127.0.0.1:81" target="_blank" rel="noopener">http://127.0.0.1:81</a></p>
+<p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
+</li>
+</ol>
+<h1 id="公有云部署"><a href="#公有云部署" class="headerlink" title="公有云部署"></a>公有云部署</h1><h2 id="多个实例配置-1"><a href="#多个实例配置-1" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ol>
+<li><p>启动Start_AWS_TURNServer.bat</p>
+</li>
+<li><p>启动Matchmaker/run.bat</p>
+<p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：</p>
+<p>–httpPort 90 –matchmakerPort 9999</p>
+</li>
+<li><p>启动SignallingWebServer_run.bat</p>
+<p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
+<p><strong>[服务器1]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 80 –streamerPort = 8888</p>
+<p><strong>[服务器2]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 81 –streamerPort = 8887</p>
+<ul>
+<li><p>云服务器上，参数UseMatchmaker 不起作用，需要修改config.json文件，将UseMatchmaker改为True：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"UseFrontend"</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">"UseMatchmaker"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"UseHTTPS"</span>: <span class="literal">false</span>,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在云服务器上，参数httpPort 、streamerPort 也不起作用，修改cirrus.js对应的参数即可</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> httpPort = <span class="number">80</span>;</span><br><span class="line"><span class="keyword">var</span> streamerPort = <span class="number">8888</span>; <span class="comment">// port to listen to Streamer connections</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需将SignallingWebServer文件夹复制多份，作相应配置。</p>
+</li>
+</ul>
+</li>
+<li><p>启动PixelStreaming.exe应用程序实例</p>
+<p><strong>启动参数：</strong></p>
+<p><strong>[实例1]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
+<p><strong>[实例2]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</p>
+</li>
+<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong><a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接</p>
+<p><strong>[网址1]</strong> <a href="http://127.0.0.1:80" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
+<p><strong>[网址2]</strong> <a href="http://127.0.0.1:81" target="_blank" rel="noopener">http://127.0.0.1:81</a></p>
+<p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Unreal Engine</category>
@@ -25,17 +116,6 @@
         <tag>UE4</tag>
         <tag>PixelStreaming</tag>
         <tag>云渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hello</title>
-    <url>/2020/04/06/hello/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>UnrealEngine</category>
-      </categories>
-      <tags>
-        <tag>Test</tag>
       </tags>
   </entry>
 </search>
