@@ -145,7 +145,7 @@
 </blockquote>
 <ol>
 <li><p>启动TURN服务 Start_AWS_TURNServer.bat</p>
-<p><strong>目录：</strong>\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_AWS_TURNServer.bat</p>
+<p><strong>目录：</strong>\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_AWS_TURNServer.bat</p>
 </li>
 <li><p>启动Signalling和Web服务器 runAWS_WithTURN.bat</p>
 <p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
