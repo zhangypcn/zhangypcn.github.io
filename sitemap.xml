@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2020-04-16T16:28:44.516Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/04/10/PixelStreaming-Deployment/</loc>
     
     <lastmod>2020-04-16T11:16:06.715Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>http://yoursite.com/archives/index.html</loc>
     
     <lastmod>2020-02-22T16:58:04.339Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
-    
-    <lastmod>2020-02-22T16:57:07.194Z</lastmod>
     
   </url>
   
