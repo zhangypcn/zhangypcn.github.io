@@ -20,6 +20,20 @@
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
   <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://zhangypcn.github.io"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+  </script>
 
 
 
@@ -396,9 +410,8 @@
 
             
               <div class="site-state-item site-state-posts">
-              
                 <a href="/archives/%7C%7Carchive">
-              
+                <a href="/archives">
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
@@ -421,7 +434,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
