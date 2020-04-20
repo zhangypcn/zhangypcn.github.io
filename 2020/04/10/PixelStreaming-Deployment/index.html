@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/10/PixelStreaming-Deployment/NvEncError.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/04/10/PixelStreaming-Deployment/vGPU369.jpg">
 <meta property="article:published_time" content="2020-04-09T16:46:49.000Z">
-<meta property="article:modified_time" content="2020-04-16T11:16:06.715Z">
+<meta property="article:modified_time" content="2020-04-20T03:29:55.055Z">
 <meta property="article:author" content="zhang">
 <meta property="article:tag" content="UE4">
 <meta property="article:tag" content="PixelStreaming">
@@ -394,8 +394,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-16T19:16:06+08:00">
-                2020-04-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T11:29:55+08:00">
+                2020-04-20
               </time>
             
           </span>
@@ -493,7 +493,7 @@
 <li><p>运行SignallingWeb服务器</p>
 <p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
 </li>
-<li><p>运行应用程序实例（PixelStreamingIP为客户端访问地址，根据情况修改，如公网：-PixelStreamingIP=49.4.27.42）</p>
+<li><p>运行应用程序实例（PixelStreamingIP为客户端访问地址，根据情况修改，如公网：-PixelStreamingIP=49.xx.xx.42）</p>
 <p><strong>目录：</strong>/WindowsNoEditor/PixelStreamingDemo.exe**</p>
 <p><strong>启动参数：</strong>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
 </li>
@@ -612,7 +612,7 @@
 <p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：</p>
 <p>–httpPort 90 –matchmakerPort 9999</p>
 </li>
-<li><p>启动SignallingWebServer_run.bat</p>
+<li><p>启动SignallingWebServer/runAWS_WithTURN.bat</p>
 <p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
 <p><strong>[服务器1]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 80 –streamerPort = 8888</p>
 <p><strong>[服务器2]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 81 –streamerPort = 8887</p>
@@ -638,6 +638,10 @@
 <p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
 </li>
 </ol>
+<hr>
+<p><strong>参考资料</strong></p>
+<p><a href="https://docs.unrealengine.com/en-US/Platforms/PixelStreaming/index.html" target="_blank" rel="noopener">Unreal Engine Docs: Platform Development_Pixel Streaming</a></p>
+<p><a href="https://www.unrealengine.com/zh-CN/tech-blog/how-to-deploy-ue4-pixel-streaming-on-public-cloud" target="_blank" rel="noopener">Unreal Engine Blog: UE4像素流应用在公有云上的快速部署指南_周澄清</a></p>
 <hr>
 
       
