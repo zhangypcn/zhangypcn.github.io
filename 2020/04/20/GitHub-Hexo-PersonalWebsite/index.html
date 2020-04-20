@@ -89,7 +89,7 @@
 
 
 
-  <meta name="keywords" content="UE4,PixelStreaming,云渲染," />
+  <meta name="keywords" content="GitHub Pages,Hexo,NexT," />
 
 
 
@@ -100,29 +100,19 @@
 
 
 
-<meta name="description" content="写在前面本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。">
+<meta name="description" content="写在前面本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PixelStreaming 局域网及公有云部署全流程记录">
-<meta property="og:url" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/index.html">
+<meta property="og:title" content="GitHub+Hexo+NexT搭建个人网站全流程及魔改记录">
+<meta property="og:url" content="http://zhangypcn.github.io/2020/04/20/GitHub-Hexo-PersonalWebsite/index.html">
 <meta property="og:site_name" content="Zhang">
-<meta property="og:description" content="写在前面本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/PixelStreaming4.24.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/Firewall.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/NETFramework3.5.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/AudioService.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/RemoteAudio.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/IEConfig.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/NvEncError.jpg">
-<meta property="og:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/vGPU369.jpg">
-<meta property="article:published_time" content="2020-04-09T16:46:49.000Z">
-<meta property="article:modified_time" content="2020-04-20T05:23:55.194Z">
+<meta property="og:description" content="写在前面本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。">
+<meta property="article:published_time" content="2020-04-20T06:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-20T06:45:43.828Z">
 <meta property="article:author" content="zhang">
-<meta property="article:tag" content="UE4">
-<meta property="article:tag" content="PixelStreaming">
-<meta property="article:tag" content="云渲染">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="NexT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg">
 
 
 
@@ -152,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/"/>
+  <link rel="canonical" href="http://zhangypcn.github.io/2020/04/20/GitHub-Hexo-PersonalWebsite/"/>
 
 
 
 
 
-  <title>PixelStreaming 局域网及公有云部署全流程记录 | Zhang</title>
+  <title>GitHub+Hexo+NexT搭建个人网站全流程及魔改记录 | Zhang</title>
   
 
 
@@ -349,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/">
+    <link itemprop="mainEntityOfPage" href="http://zhangypcn.github.io/2020/04/20/GitHub-Hexo-PersonalWebsite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhang">
@@ -366,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PixelStreaming 局域网及公有云部署全流程记录</h1>
+          <h1 class="post-title" itemprop="name headline">GitHub+Hexo+NexT搭建个人网站全流程及魔改记录</h1>
         
 
         <div class="post-meta">
@@ -378,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T00:46:49+08:00">
-                2020-04-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T14:00:00+08:00">
+                2020-04-20
               </time>
             
 
@@ -394,7 +384,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T13:23:55+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T14:45:43+08:00">
                 2020-04-20
               </time>
             
@@ -413,8 +403,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unreal-Engine/" itemprop="url" rel="index">
-                    <span itemprop="name">Unreal Engine</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -455,194 +445,51 @@
       
 
       
-        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。</p>
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。</p>
 <a id="more"></a>
 
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>PixelStreaming自UnrealEngine4.21版本开始提供测试，能够向Web浏览器发送高质量的可视化内容，让移动设备和轻量级Web浏览器能够轻松浏览工作站品质的3D图形。用户通过链接即可访问，并且提供了多人同时访问或单人独立访问的自由部署方案，将像素流送项目部署在云平台服务器上，在高性能、高负载的云计算平台以及高速率、低延迟的5G技术的支持下，实现多人、异地、多终端的远程协同。</p>
-<p>PixelStreaming技术可以为汽车制造商以及经销商提供一种通用的线上展厅解决方案，为汽车客户带来方便快捷的高质量汽车交互体验。以此解决方案为思路，可拓展至工业产品研发过程中，对工业数据进行3D可视化，创建交互式内容，以进行不同角色的设计人员在异地辅助决策，缩短产品设计和评审时间，从而减少产品研发过程中的资金及时间成本，显著提高工作效率。另外在智慧城市、智慧交通、数字地产等行业，PixelStreaming也有很大的用武之地。</p>
-<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><h2 id="UE4-24以前版本"><a href="#UE4-24以前版本" class="headerlink" title="UE4.24以前版本"></a>UE4.24以前版本</h2><p>UE4.24版本之前，PixelStreaming通过配置PixelStreaming插件、WebRTC代理服务器、Signaling和Web服务器来工作。</p>
-<p><strong>PixelStreaming插件</strong>：负责视频编码，将视频与音频压缩到媒体流中，并发送到WebRTC代理服务器。</p>
-<p><strong>WebRTC代理服务器</strong>：负责将像素流送插件产生的媒体流通过直接的点对点连接转发给查看者。</p>
-<p><strong>Signaling和Web服务器</strong>：负责在查看者和WebRTC代理服务器之间建立连接，为查看者提供播放媒体流内容的HTML和JavaScript环境。</p>
-<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreamingFramework.jpg" alt="PixelStreamingFramework" title="4.21 PixelStreaming原理"> </p>
-<h2 id="UE4-24之后版本"><a href="#UE4-24之后版本" class="headerlink" title="UE4.24之后版本"></a>UE4.24之后版本</h2><p>UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工作流程变为了由Signaling和Web服务器充当桥梁，连接UE4应用和Web浏览器。</p>
-<p><img src="/2020/04/10/PixelStreaming-Deployment/PixelStreaming4.24.jpg" alt="PixelStreaming4.24" title="4.24 PixelStreaming原理"></p>
-<h1 id="局域网部署"><a href="#局域网部署" class="headerlink" title="局域网部署"></a>局域网部署</h1><h2 id="单个实例配置"><a href="#单个实例配置" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><ul>
-<li><strong>UE4.24以前版本：</strong></li>
-</ul>
-<ol>
-<li><p>运行WebRTC代理服务器</p>
-<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin\Start_WebRTCProxy.bat</code></p>
-</li>
-<li><p>运行SignallingWeb服务器</p>
-<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</code></p>
-<p><strong>启动参数：</strong> <code>--publicIp 127.0.0.1（此IP为客户端访问地址，根据情况修改，如公网：--publicIp 49.xx.xx.42）</code></p>
-</li>
-<li><p>运行应用程序实例</p>
-<p><strong>目录：</strong> <code>WindowsNoEditor/PixelStreamingDemo.exe</code></p>
-<p><strong>启动参数：</strong> <code>-AudioMixer -PixelStreamingPort=8124 -RenderOffScreen</code></p>
-</li>
-<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）访问网页链接</p>
-<p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为启动SignallingWebServer时设置的publicIp值)</p>
-</li>
-</ol>
-<ul>
-<li><strong>UE4.24之后版本：</strong></li>
-</ul>
-<ol>
-<li><p>运行SignallingWeb服务器</p>
-<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</code></p>
-</li>
-<li><p>运行应用程序实例（PixelStreamingIP为客户端访问地址，根据情况修改，如公网：-PixelStreamingIP=49.xx.xx.42）</p>
-<p><strong>目录：</strong> <code>/WindowsNoEditor/PixelStreamingDemo.exe</code></p>
-<p><strong>启动参数：</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</code></p>
-</li>
-<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）访问网页链接</p>
-<p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为运行应用程序实例时设置的PixelStreamingIP)</p>
-</li>
-</ol>
-<p><strong>相关参数说明：</strong></p>
-<p>** 待更新 **</p>
-<h2 id="多个实例配置"><a href="#多个实例配置" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ul>
-<li><strong>UE4.24之后版本：</strong></li>
-</ul>
-<ol>
-<li><p>启动Matchmaker/run.bat</p>
-<p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）： <code>--httpPort 90 --matchmakerPort 9999</code></p>
-</li>
-<li><p>启动SignallingWebServer_run.bat</p>
-<p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
-<p><strong>[服务器1]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 80 --streamerPort = 8888</code></p>
-<p><strong>[服务器2]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 81 --streamerPort = 8887</code></p>
-</li>
-<li><p>启动PixelStreaming.exe应用程序实例</p>
-<p><strong>启动参数：</strong></p>
-<p><strong>[实例1]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</code></p>
-<p><strong>[实例2]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</code></p>
-</li>
-<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong> <a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接：</p>
-<p><strong>[网址1]</strong> <a href="http://127.0.0.1/MakeReal3DCloud.htm" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
-<p><strong>[网址2]</strong> <a href="http://127.0.0.1:81" target="_blank" rel="noopener">http://127.0.0.1:81</a></p>
-<p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
-</li>
-</ol>
-<h1 id="公有云部署"><a href="#公有云部署" class="headerlink" title="公有云部署"></a>公有云部署</h1><h2 id="云服务器环境配置"><a href="#云服务器环境配置" class="headerlink" title="云服务器环境配置"></a>云服务器环境配置</h2><blockquote>
-<p> 以华为云为例，其他云平台情况大致相同，腾讯云、阿里云可以直接运行像素流送实例，可省略部分步骤。</p>
-</blockquote>
-<ul>
-<li><p><strong>云服务器系统信息：</strong><br>DirectX版本: DirectX 11<br>CPU: Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz (16 CPUs), ~2.3GHz<br>GPU: NVIDIA Tesla M60 </p>
-</li>
-<li><p>防火墙设置</p>
-<p>默认防火墙设置可能会禁止像素流所用到的端口的通信。<strong>快速测试时，</strong>在控制面板 &gt;&gt; 防火墙设置中先关闭防火墙。<strong>正式使用时，</strong>应该在高级防火墙设置中，创建相应的规则，将需要使用的协议或者端口打开，也可以将像素流应用及其他相关应用都加入到白名单中去。</p>
-<img src="/2020/04/10/PixelStreaming-Deployment/Firewall.jpg" alt="防火墙设置" style="zoom:40%;">
-</li>
-<li><p>安装.NET Framework3.5</p>
-<p>cmd命令行 &gt;&gt; 输入servermanager &gt;&gt; 回车 &gt;&gt; 选择管理&gt;&gt;添加角色和功能 &gt;&gt; Next &gt;&gt; 功能 &gt;&gt; 选择.NET Framework3.5 &gt;&gt; 点击安装</p>
-<img src="/2020/04/10/PixelStreaming-Deployment/NETFramework3.5.jpg" alt="NET Framework3.5安装" style="zoom:30%;">
-</li>
-<li><p>启动声音服务</p>
-<p>cmd命令行 &gt;&gt; services.msc &gt;&gt; 将Windows Audio以及Windows Audio Endpoint Builder服务启动</p>
-<img src="/2020/04/10/PixelStreaming-Deployment/AudioService.jpg" alt="启动声音服务" style="zoom:40%;">
-</li>
-<li><p>设置远程桌面链接远程音频</p>
-<img src="/2020/04/10/PixelStreaming-Deployment/RemoteAudio.jpg" alt="远程音频" style="zoom:40%;">
-</li>
-<li><p>关闭IE的安全配置</p>
-<p>Windows Server 默认设置是不允许从浏览器下载内容的，所以要通过浏览器下载任何软件，你需要先在ServerManager里关闭IE Enhanced Security Configuration。当然安全起见，当下载完需要的软件后，还是建议重新启用以增强系统的安全性。</p>
-<img src="/2020/04/10/PixelStreaming-Deployment/IEConfig.jpg" alt="IE安全配置" style="zoom:30%;">
+<p>– 持续更新 –</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>GitHub Pages：一项静态站点托管服务</p>
+<p>Hexo：一个高效的博客框架</p>
+<p>NexT：一个简约风格的网站主题</p>
+<p>GitHub提供了 <code>.github.io</code> 域，省去了自已去购买域名的金钱和精力。</p>
+<h1 id="文章版权声明"><a href="#文章版权声明" class="headerlink" title="文章版权声明"></a>文章版权声明</h1><h2 id="添加版权声明"><a href="#添加版权声明" class="headerlink" title="添加版权声明"></a>添加版权声明</h2><ol>
+<li><p>修改主题配置文件，关键词：post_copyright，设置 enable 为 true </p>
+<p><strong>目录：</strong> <code>.\yourWebsiteRootDir\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare license on posts</span></span><br><span class="line"><span class="attr">post_copyright:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-creative-commons"&gt;&lt;/i&gt;</span> <span class="string">BY-NC-SA</span> <span class="number">3.0</span></span><br><span class="line">  <span class="attr">license_url:</span> <span class="string">https://creativecommons.org/licenses/by-nc-sa/3.0/</span></span><br></pre></td></tr></table></figure>
+
 
 </li>
-</ul>
-<h2 id="PixelStreaming环境配置"><a href="#PixelStreaming环境配置" class="headerlink" title="PixelStreaming环境配置"></a>PixelStreaming环境配置</h2><h3 id="必要环境配置"><a href="#必要环境配置" class="headerlink" title="必要环境配置"></a>必要环境配置</h3><ol>
-<li>安装Node.js</li>
-<li>安装Unreal Engine4.24</li>
 </ol>
-<h3 id="vGPU驱动"><a href="#vGPU驱动" class="headerlink" title="vGPU驱动"></a>vGPU驱动</h3><blockquote>
-<p><strong>云服务器运行Unreal Engine4.24 PixelStreaming实例必须安装vGPU/GRID驱动</strong><br><strong>其他云平台默认预装了vGPU/GRID最新驱动，无需后续步骤。</strong><br><strong>后续步骤为华为云服务器上GRID/vGPU驱动的安装步骤，安装此驱动是为了解决云服务器运行Unreal Engine4.24 PixelStreaming应用程序实例时，有NvEnc的相关报错。运行4.21版本的像素流送应用程序实例无此问题。</strong></p>
-</blockquote>
-<img src="/2020/04/10/PixelStreaming-Deployment/NvEncError.jpg" alt="NvEnc Error" style="zoom:60%;">
-
-<ol>
-<li><p>安装华为云提供的NVIDIA驱动</p>
-<p>华为云Window公共镜像中有该驱动的安装文件，文件目录C:\NVIDIA\369.71，点击Setup.exe安装即可。<strong>此步骤是为了先安装，后更新。直接安装来自NVIDIA License Dashboard下载的GRID/vGPU最新驱动，会安装失败。</strong></p>
-<img src="/2020/04/10/PixelStreaming-Deployment/vGPU369.jpg" alt="华为云提供的vGPU驱动版本安装" style="zoom:50%;">
-</li>
-</ol>
-<ul>
-<li><strong>步骤2、3只为了下载到vGPU/GRID最新驱动，若有其他方式获取到GRID最新驱动软件包可忽略此步骤</strong></li>
-</ul>
 <ol start="2">
-<li><p>申请GRID/vGPU驱动License</p>
-<p>有申请License的步骤是因为，我只知道这一种获取最新的驱动软件包的方式，就是通过申请License的方式获得NVIDIA邮件提供的链接，进入License Dashboard下载。</p>
-<p><a href="https://enterpriseproductregistration.nvidia.com/?LicType=EVAL&ProductFamily=vGPU" target="_blank" rel="noopener">NVIDIA官网申请GRID驱动的免费License</a> （申请需要企业邮箱）</p>
-<p><strong>重要说明：</strong>N卡的图形功能不需要License，仅计算功能需要License，PixelStreaming只用到视频编码，不需要计算功能，所以没必要配置License。在这之前我并不知道这一点，所以走了很多弯路。虽然对于PixelStreaming来说不需要，不过关于获取vGPU/GRID驱动 License、安装License Server、配置License等详细步骤以及问题解决我将会在另一篇文章说明，提供给有需要的朋友参考。</p>
-</li>
-<li><p>更新GRID vGPU驱动</p>
-<p>通过License申请成功的邮件所提供的链接<a href="https://ui.licensing.nvidia.com" target="_blank" rel="noopener">NVIDIA License仪表盘</a> ，下载到vGPU/GRID驱动最新的软件包，如”NVIDIA-GRID-Windows-418.130-426.52.zip“，安装更新即可。</p>
-</li>
-<li><p>到此，运行Unreal Engine4.24 PixelStreaming应用程序实例，运行正常，没有报错。</p>
+<li><p>修改站点配置文件，关键词：url，设置 url 为主页地址</p>
+<p><strong>目录：</strong> <code>.\yourWebsiteRootDir\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">http://zhangypcn.github.io</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h2 id="单个实例配置-1"><a href="#单个实例配置-1" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><ol>
-<li><p>启动STUN服务 Start_STUNServer.bat</p>
-<p><strong>目录：</strong> <code>\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_STUNServer.bat</code></p>
+<h2 id="自定义版权声明"><a href="#自定义版权声明" class="headerlink" title="自定义版权声明"></a>自定义版权声明</h2><h3 id="自定义是否添加版权声明"><a href="#自定义是否添加版权声明" class="headerlink" title="自定义是否添加版权声明"></a>自定义是否添加版权声明</h3><ol>
+<li><p>修改post-copyright.swig文件，添加文章是否开启版权声明的判断</p>
+<p><strong>目录</strong> <code>&quot;.\yourWebsiteRootDir\themes\next\layout\_macro\post-copyright.swig&quot;</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;%</span> <span class="string">if</span> <span class="string">page.copyright</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;div&gt;</span>    </span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">if</span> <span class="string">not</span> <span class="string">is_index</span> <span class="string">%&#125;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">···</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>修改后：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;%</span> <span class="string">if</span> <span class="string">page.copyright</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;div&gt;</span>    </span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">if</span> <span class="string">not</span> <span class="string">is_index</span> <span class="string">%&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="string">&lt;ul</span> <span class="string">class="post-copyright"&gt;</span></span><br><span class="line">        <span class="string">&lt;li</span> <span class="string">class="post-copyright-author"&gt;</span></span><br><span class="line">          <span class="string">&lt;strong&gt;&#123;&#123;</span> <span class="string">__('post.copyright.author')</span> <span class="string">+</span> <span class="string">__('symbol.colon')</span> <span class="string">&#125;&#125;&lt;/strong&gt;</span></span><br><span class="line">          <span class="string">&#123;&#123;</span> <span class="string">post.author</span> <span class="string">|</span> <span class="string">default(config.author)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="string">&lt;/li&gt;</span></span><br><span class="line">        <span class="string">&lt;li</span> <span class="string">class="post-copyright-link"&gt;</span></span><br><span class="line">          <span class="string">&lt;strong&gt;&#123;&#123;</span> <span class="string">__('post.copyright.link')</span> <span class="string">+</span> <span class="string">__('symbol.colon')</span> <span class="string">&#125;&#125;&lt;/strong&gt;</span></span><br><span class="line">          <span class="string">&lt;a</span> <span class="string">href="&#123;&#123;</span> <span class="string">post.url</span> <span class="string">|</span> <span class="string">default(post.permalink)</span> <span class="string">&#125;&#125;"</span> <span class="string">title="&#123;&#123;</span> <span class="string">post.title</span> <span class="string">&#125;&#125;"&gt;&#123;&#123;</span> <span class="string">post.url</span> <span class="string">|</span> <span class="string">default(post.permalink)</span> <span class="string">&#125;&#125;&lt;/a&gt;</span></span><br><span class="line">        <span class="string">&lt;/li&gt;</span></span><br><span class="line">        <span class="string">&lt;li</span> <span class="string">class="post-copyright-license"&gt;</span></span><br><span class="line">          <span class="string">&lt;strong&gt;&#123;&#123;</span> <span class="string">__('post.copyright.license_title')</span> <span class="string">+</span> <span class="string">__('symbol.colon')</span> <span class="string">&#125;&#125;</span> <span class="string">&lt;/strong&gt;</span></span><br><span class="line">          <span class="string">&#123;&#123;</span> <span class="string">__('post.copyright.license_content',</span> <span class="string">theme.post_copyright.license_url,</span> <span class="string">theme.post_copyright.license)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="string">&lt;/li&gt;</span></span><br><span class="line">      <span class="string">&lt;/ul&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>启动Signalling和Web服务器 runAWS.bat</p>
-<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS.bat</code></p>
-</li>
-<li><p>启动应用程序实例，具体启动参数参考局域网部署步骤。</p>
-</li>
-</ol>
-<blockquote>
-<p>如果上述步骤Web浏览器无法查看视频流送，则换用TURN服务部署方法。</p>
-</blockquote>
-<ol>
-<li><p>启动TURN服务 Start_AWS_TURNServer.bat</p>
-<p><strong>目录：</strong> <code>\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_AWS_TURNServer.bat</code></p>
-</li>
-<li><p>启动Signalling和Web服务器 runAWS_WithTURN.bat</p>
-<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</code></p>
-</li>
-<li><p>启动应用程序，具体启动参数参考局域网部署步骤。</p>
+<li><p>文章添加前置内容copyright，若不需要版权声明，则设置为false，或者不加此项</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">XXX</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020</span><span class="number">-04</span><span class="number">-20</span> <span class="number">14</span><span class="string">:00:00</span></span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 </li>
 </ol>
-<h2 id="多个实例配置-1"><a href="#多个实例配置-1" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ol>
-<li><p>启动Start_AWS_TURNServer.bat</p>
-</li>
-<li><p>启动Matchmaker/run.bat</p>
-<p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：</p>
-<p><code>--httpPort 90 --matchmakerPort 9999</code></p>
-</li>
-<li><p>启动SignallingWebServer/runAWS_WithTURN.bat</p>
-<p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
-<p><strong>[服务器1]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 80 --streamerPort = 8888</code></p>
-<p><strong>[服务器2]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 81 --streamerPort = 8887</code></p>
-<ul>
-<li><p>云服务器上，参数UseMatchmaker 不起作用，需要修改config.json文件，将UseMatchmaker改为True：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"UseFrontend"</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">"UseMatchmaker"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"UseHTTPS"</span>: <span class="literal">false</span>,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在云服务器上，参数httpPort 、streamerPort 也不起作用，修改cirrus.js对应的参数即可</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> httpPort = <span class="number">80</span>;</span><br><span class="line"><span class="keyword">var</span> streamerPort = <span class="number">8888</span>; <span class="comment">// port to listen to Streamer connections</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>需将SignallingWebServer文件夹复制多份，作相应配置。</p>
-</li>
-</ul>
-</li>
-<li><p>启动PixelStreaming.exe应用程序实例</p>
-<p><strong>启动参数：</strong></p>
-<p><strong>[实例1]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</code></p>
-<p><strong>[实例2]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</code></p>
-</li>
-<li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong><a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接</p>
-<p><strong>[网址1]</strong> <a href="http://127.0.0.1:80" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
-<p><strong>[网址2]</strong> <a href="http://127.0.0.1:81" target="_blank" rel="noopener">http://127.0.0.1:81</a></p>
-<p>即可多人浏览单独的PixelStreaming应用程序实例。</p>
-</li>
-</ol>
-<hr>
-<p><strong>参考资料</strong></p>
-<p><a href="https://docs.unrealengine.com/en-US/Platforms/PixelStreaming/index.html" target="_blank" rel="noopener">Unreal Engine Docs: Platform Development_Pixel Streaming</a></p>
-<p><a href="https://www.unrealengine.com/zh-CN/tech-blog/how-to-deploy-ue4-pixel-streaming-on-public-cloud" target="_blank" rel="noopener">Unreal Engine Blog: UE4像素流应用在公有云上的快速部署指南_周澄清</a></p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+<p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a></p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
 <hr>
 
       
@@ -693,7 +540,7 @@
         </li>
         <li class="post-copyright-link">
           <strong>本文链接：</strong>
-          <a href="http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/" title="PixelStreaming 局域网及公有云部署全流程记录">http://zhangypcn.github.io/2020/04/10/PixelStreaming-Deployment/</a>
+          <a href="http://zhangypcn.github.io/2020/04/20/GitHub-Hexo-PersonalWebsite/" title="GitHub+Hexo+NexT搭建个人网站全流程及魔改记录">http://zhangypcn.github.io/2020/04/20/GitHub-Hexo-PersonalWebsite/</a>
         </li>
         <li class="post-copyright-license">
           <strong>版权声明： </strong>
@@ -712,11 +559,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UE4/" rel="tag"># UE4</a>
+            <a href="/tags/GitHub-Pages/" rel="tag"># GitHub Pages</a>
           
-            <a href="/tags/PixelStreaming/" rel="tag"># PixelStreaming</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
-            <a href="/tags/%E4%BA%91%E6%B8%B2%E6%9F%93/" rel="tag"># 云渲染</a>
+            <a href="/tags/NexT/" rel="tag"># NexT</a>
           
         </div>
       
@@ -729,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/06/Test/" rel="next" title="Hello">
-                <i class="fa fa-chevron-left"></i> Hello
+              <a href="/2020/04/10/PixelStreaming-Deployment/" rel="next" title="PixelStreaming 局域网及公有云部署全流程记录">
+                <i class="fa fa-chevron-left"></i> PixelStreaming 局域网及公有云部署全流程记录
               </a>
             
           </div>
@@ -738,10 +585,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/20/GitHub-Hexo-PersonalWebsite/" rel="prev" title="GitHub+Hexo+NexT搭建个人网站全流程及魔改记录">
-                GitHub+Hexo+NexT搭建个人网站全流程及魔改记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -929,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作原理"><span class="nav-number">3.</span> <span class="nav-text">工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UE4-24以前版本"><span class="nav-number">3.1.</span> <span class="nav-text">UE4.24以前版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UE4-24之后版本"><span class="nav-number">3.2.</span> <span class="nav-text">UE4.24之后版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局域网部署"><span class="nav-number">4.</span> <span class="nav-text">局域网部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单个实例配置"><span class="nav-number">4.1.</span> <span class="nav-text">单个实例配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个实例配置"><span class="nav-number">4.2.</span> <span class="nav-text">多个实例配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公有云部署"><span class="nav-number">5.</span> <span class="nav-text">公有云部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#云服务器环境配置"><span class="nav-number">5.1.</span> <span class="nav-text">云服务器环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PixelStreaming环境配置"><span class="nav-number">5.2.</span> <span class="nav-text">PixelStreaming环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#必要环境配置"><span class="nav-number">5.2.1.</span> <span class="nav-text">必要环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vGPU驱动"><span class="nav-number">5.2.2.</span> <span class="nav-text">vGPU驱动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单个实例配置-1"><span class="nav-number">5.3.</span> <span class="nav-text">单个实例配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个实例配置-1"><span class="nav-number">5.4.</span> <span class="nav-text">多个实例配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文章版权声明"><span class="nav-number">3.</span> <span class="nav-text">文章版权声明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加版权声明"><span class="nav-number">3.1.</span> <span class="nav-text">添加版权声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义版权声明"><span class="nav-number">3.2.</span> <span class="nav-text">自定义版权声明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义是否添加版权声明"><span class="nav-number">3.2.1.</span> <span class="nav-text">自定义是否添加版权声明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关链接"><span class="nav-number">4.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
             
 
           </div>

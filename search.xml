@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GitHub+Hexo+NexT搭建个人网站全流程及魔改记录</title>
+    <url>/2020/04/20/GitHub-Hexo-PersonalWebsite/</url>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。</p>
+<a id="more"></a>
+
+<p>– 持续更新 –</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>GitHub Pages：一项静态站点托管服务</p>
+<p>Hexo：一个高效的博客框架</p>
+<p>NexT：一个简约风格的网站主题</p>
+<p>GitHub提供了 <code>.github.io</code> 域，省去了自已去购买域名的金钱和精力。</p>
+<h1 id="文章版权声明"><a href="#文章版权声明" class="headerlink" title="文章版权声明"></a>文章版权声明</h1><h2 id="添加版权声明"><a href="#添加版权声明" class="headerlink" title="添加版权声明"></a>添加版权声明</h2><ol>
+<li><p>修改主题配置文件，关键词：post_copyright，设置 enable 为 true </p>
+<p><strong>目录：</strong> <code>.\yourWebsiteRootDir\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Declare license on posts</span></span><br><span class="line"><span class="attr">post_copyright:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-creative-commons"&gt;&lt;/i&gt;</span> <span class="string">BY-NC-SA</span> <span class="number">3.0</span></span><br><span class="line">  <span class="attr">license_url:</span> <span class="string">https://creativecommons.org/licenses/by-nc-sa/3.0/</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>修改站点配置文件，关键词：url，设置 url 为主页地址</p>
+<p><strong>目录：</strong> <code>.\yourWebsiteRootDir\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">http://zhangypcn.github.io</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="自定义版权声明"><a href="#自定义版权声明" class="headerlink" title="自定义版权声明"></a>自定义版权声明</h2><h3 id="自定义是否添加版权声明"><a href="#自定义是否添加版权声明" class="headerlink" title="自定义是否添加版权声明"></a>自定义是否添加版权声明</h3><ol>
+<li><p>修改post-copyright.swig文件，添加文章是否开启版权声明的判断</p>
+<p><strong>目录</strong> <code>&quot;.\yourWebsiteRootDir\themes\next\layout\_macro\post-copyright.swig&quot;</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">&#123;%</span> <span class="string">if</span> <span class="string">page.copyright</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;div&gt;</span>    </span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">if</span> <span class="string">not</span> <span class="string">is_index</span> <span class="string">%&#125;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">···</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>修改后：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">&#123;%</span> <span class="string">if</span> <span class="string">page.copyright</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;div&gt;</span>    </span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">if</span> <span class="string">not</span> <span class="string">is_index</span> <span class="string">%&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="string">&lt;ul</span> <span class="string">class="post-copyright"&gt;</span></span><br><span class="line">        <span class="string">&lt;li</span> <span class="string">class="post-copyright-author"&gt;</span></span><br><span class="line">          <span class="string">&lt;strong&gt;&#123;&#123;</span> <span class="string">__('post.copyright.author')</span> <span class="string">+</span> <span class="string">__('symbol.colon')</span> <span class="string">&#125;&#125;&lt;/strong&gt;</span></span><br><span class="line">          <span class="string">&#123;&#123;</span> <span class="string">post.author</span> <span class="string">|</span> <span class="string">default(config.author)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="string">&lt;/li&gt;</span></span><br><span class="line">        <span class="string">&lt;li</span> <span class="string">class="post-copyright-link"&gt;</span></span><br><span class="line">          <span class="string">&lt;strong&gt;&#123;&#123;</span> <span class="string">__('post.copyright.link')</span> <span class="string">+</span> <span class="string">__('symbol.colon')</span> <span class="string">&#125;&#125;&lt;/strong&gt;</span></span><br><span class="line">          <span class="string">&lt;a</span> <span class="string">href="&#123;&#123;</span> <span class="string">post.url</span> <span class="string">|</span> <span class="string">default(post.permalink)</span> <span class="string">&#125;&#125;"</span> <span class="string">title="&#123;&#123;</span> <span class="string">post.title</span> <span class="string">&#125;&#125;"&gt;&#123;&#123;</span> <span class="string">post.url</span> <span class="string">|</span> <span class="string">default(post.permalink)</span> <span class="string">&#125;&#125;&lt;/a&gt;</span></span><br><span class="line">        <span class="string">&lt;/li&gt;</span></span><br><span class="line">        <span class="string">&lt;li</span> <span class="string">class="post-copyright-license"&gt;</span></span><br><span class="line">          <span class="string">&lt;strong&gt;&#123;&#123;</span> <span class="string">__('post.copyright.license_title')</span> <span class="string">+</span> <span class="string">__('symbol.colon')</span> <span class="string">&#125;&#125;</span> <span class="string">&lt;/strong&gt;</span></span><br><span class="line">          <span class="string">&#123;&#123;</span> <span class="string">__('post.copyright.license_content',</span> <span class="string">theme.post_copyright.license_url,</span> <span class="string">theme.post_copyright.license)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="string">&lt;/li&gt;</span></span><br><span class="line">      <span class="string">&lt;/ul&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br><span class="line">  <span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#123;%</span> <span class="string">endif</span> <span class="string">%&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文章添加前置内容copyright，若不需要版权声明，则设置为false，或者不加此项</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">XXX</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020</span><span class="number">-04</span><span class="number">-20</span> <span class="number">14</span><span class="string">:00:00</span></span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</li>
+</ol>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+<p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a></p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>GitHub Pages</tag>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PixelStreaming 局域网及公有云部署全流程记录</title>
     <url>/2020/04/10/PixelStreaming-Deployment/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。</p>
@@ -20,15 +79,15 @@
 </ul>
 <ol>
 <li><p>运行WebRTC代理服务器</p>
-<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin\Start_WebRTCProxy.bat</p>
+<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebRTCProxy\bin\Start_WebRTCProxy.bat</code></p>
 </li>
 <li><p>运行SignallingWeb服务器</p>
-<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
-<p><strong>启动参数：</strong> –publicIp 127.0.0.1（此IP为客户端访问地址，根据情况修改，如公网：–publicIp 49.xx.xx.42）</p>
+<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</code></p>
+<p><strong>启动参数：</strong> <code>--publicIp 127.0.0.1（此IP为客户端访问地址，根据情况修改，如公网：--publicIp 49.xx.xx.42）</code></p>
 </li>
 <li><p>运行应用程序实例</p>
-<p><strong>目录：</strong>/WindowsNoEditor/PixelStreamingDemo.exe</p>
-<p><strong>启动参数：</strong> -AudioMixer -PixelStreamingPort=8124 -RenderOffScreen</p>
+<p><strong>目录：</strong> <code>WindowsNoEditor/PixelStreamingDemo.exe</code></p>
+<p><strong>启动参数：</strong> <code>-AudioMixer -PixelStreamingPort=8124 -RenderOffScreen</code></p>
 </li>
 <li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）访问网页链接</p>
 <p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为启动SignallingWebServer时设置的publicIp值)</p>
@@ -39,33 +98,34 @@
 </ul>
 <ol>
 <li><p>运行SignallingWeb服务器</p>
-<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
+<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</code></p>
 </li>
 <li><p>运行应用程序实例（PixelStreamingIP为客户端访问地址，根据情况修改，如公网：-PixelStreamingIP=49.xx.xx.42）</p>
-<p><strong>目录：</strong>/WindowsNoEditor/PixelStreamingDemo.exe**</p>
-<p><strong>启动参数：</strong>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
+<p><strong>目录：</strong> <code>/WindowsNoEditor/PixelStreamingDemo.exe</code></p>
+<p><strong>启动参数：</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</code></p>
 </li>
 <li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）访问网页链接</p>
 <p><a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> (此IP为运行应用程序实例时设置的PixelStreamingIP)</p>
 </li>
 </ol>
 <p><strong>相关参数说明：</strong></p>
+<p>** 待更新 **</p>
 <h2 id="多个实例配置"><a href="#多个实例配置" class="headerlink" title="多个实例配置"></a>多个实例配置</h2><ul>
 <li><strong>UE4.24之后版本：</strong></li>
 </ul>
 <ol>
 <li><p>启动Matchmaker/run.bat</p>
-<p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：–httpPort 90 –matchmakerPort 9999</p>
+<p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）： <code>--httpPort 90 --matchmakerPort 9999</code></p>
 </li>
 <li><p>启动SignallingWebServer_run.bat</p>
 <p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
-<p><strong>[服务器1]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 80 –streamerPort = 8888</p>
-<p><strong>[服务器2]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 81 –streamerPort = 8887</p>
+<p><strong>[服务器1]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 80 --streamerPort = 8888</code></p>
+<p><strong>[服务器2]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 81 --streamerPort = 8887</code></p>
 </li>
 <li><p>启动PixelStreaming.exe应用程序实例</p>
 <p><strong>启动参数：</strong></p>
-<p><strong>[实例1]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
-<p><strong>[实例2]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</p>
+<p><strong>[实例1]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</code></p>
+<p><strong>[实例2]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</code></p>
 </li>
 <li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong> <a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接：</p>
 <p><strong>[网址1]</strong> <a href="http://127.0.0.1/MakeReal3DCloud.htm" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
@@ -132,10 +192,10 @@
 </ol>
 <h2 id="单个实例配置-1"><a href="#单个实例配置-1" class="headerlink" title="单个实例配置"></a>单个实例配置</h2><ol>
 <li><p>启动STUN服务 Start_STUNServer.bat</p>
-<p><strong>目录：</strong>\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_STUNServer.bat</p>
+<p><strong>目录：</strong> <code>\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_STUNServer.bat</code></p>
 </li>
 <li><p>启动Signalling和Web服务器 runAWS.bat</p>
-<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS.bat</p>
+<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS.bat</code></p>
 </li>
 <li><p>启动应用程序实例，具体启动参数参考局域网部署步骤。</p>
 </li>
@@ -145,10 +205,10 @@
 </blockquote>
 <ol>
 <li><p>启动TURN服务 Start_AWS_TURNServer.bat</p>
-<p><strong>目录：</strong>\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_AWS_TURNServer.bat</p>
+<p><strong>目录：</strong> <code>\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\Start_AWS_TURNServer.bat</code></p>
 </li>
 <li><p>启动Signalling和Web服务器 runAWS_WithTURN.bat</p>
-<p><strong>目录：</strong>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</p>
+<p><strong>目录：</strong> <code>\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat</code></p>
 </li>
 <li><p>启动应用程序，具体启动参数参考局域网部署步骤。</p>
 </li>
@@ -158,12 +218,12 @@
 </li>
 <li><p>启动Matchmaker/run.bat</p>
 <p><strong>启动参数</strong>（默认为90/9999，启动时可不加参数）：</p>
-<p>–httpPort 90 –matchmakerPort 9999</p>
+<p><code>--httpPort 90 --matchmakerPort 9999</code></p>
 </li>
 <li><p>启动SignallingWebServer/runAWS_WithTURN.bat</p>
 <p><strong>启动参数</strong>（streamerPort=8888为默认）：</p>
-<p><strong>[服务器1]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 80 –streamerPort = 8888</p>
-<p><strong>[服务器2]</strong> –UseMatchmaker true –matchmakerAddress 127.0.0.1 –matchmakerPort 9999 –publicIp 127.0.0.1 –httpPort 81 –streamerPort = 8887</p>
+<p><strong>[服务器1]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 80 --streamerPort = 8888</code></p>
+<p><strong>[服务器2]</strong> <code>--UseMatchmaker true --matchmakerAddress 127.0.0.1 --matchmakerPort 9999 --publicIp 127.0.0.1 --httpPort 81 --streamerPort = 8887</code></p>
 <ul>
 <li><p>云服务器上，参数UseMatchmaker 不起作用，需要修改config.json文件，将UseMatchmaker改为True：</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"UseFrontend"</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">"UseMatchmaker"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"UseHTTPS"</span>: <span class="literal">false</span>,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -177,8 +237,8 @@
 </li>
 <li><p>启动PixelStreaming.exe应用程序实例</p>
 <p><strong>启动参数：</strong></p>
-<p><strong>[实例1]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</p>
-<p><strong>[实例2]</strong> -PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</p>
+<p><strong>[实例1]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8888 -AudioMixer -RenderOffScreen</code></p>
+<p><strong>[实例2]</strong> <code>-PixelStreamingIP=127.0.0.1 -PixelStreamingPort=8887 -AudioMixer -RenderOffScreen</code></p>
 </li>
 <li><p>客户端使用支持WebRTC协议的浏览器（Google Chrome、Mozilla Firefox、Apple Safari）<strong>直接浏览</strong><a href="http://127.0.0.1:90" target="_blank" rel="noopener">http://127.0.0.1:90</a> ，Matchmaker将自动分配端口，从而单独浏览实例。或者<strong>分别访问</strong>网页链接</p>
 <p><strong>[网址1]</strong> <a href="http://127.0.0.1:80" target="_blank" rel="noopener">http://127.0.0.1:80</a></p>
