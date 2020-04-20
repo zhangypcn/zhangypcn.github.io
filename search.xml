@@ -182,7 +182,7 @@
 <li><p>申请GRID/vGPU驱动License</p>
 <p>有申请License的步骤是因为，我只知道这一种获取最新的驱动软件包的方式，就是通过申请License的方式获得NVIDIA邮件提供的链接，进入License Dashboard下载。</p>
 <p><a href="https://enterpriseproductregistration.nvidia.com/?LicType=EVAL&ProductFamily=vGPU" target="_blank" rel="noopener">NVIDIA官网申请GRID驱动的免费License</a> （申请需要企业邮箱）</p>
-<p><strong>重要说明：</strong>N卡的图形功能不需要License，仅计算功能需要License，PixelStreaming只用到视频编码，不需要计算功能，所以没必要配置License。在这之前我并不知道这一点，所以走了很多弯路。虽然对于PixelStreaming来说不需要，不过关于获取vGPU/GRID驱动 License、安装License Server、配置License等详细步骤以及问题解决我将会在另一篇文章说明，提供给有需要的朋友参考。</p>
+<p><strong>重要说明：</strong> N卡的图形功能不需要License，仅计算功能需要License，PixelStreaming只用到视频编码，不需要计算功能，所以没必要配置License。在这之前我并不知道这一点，所以走了很多弯路。虽然对于PixelStreaming来说不需要，不过关于获取vGPU/GRID驱动 License、安装License Server、配置License等详细步骤以及问题解决我将会在另一篇文章说明，提供给有需要的朋友参考。</p>
 </li>
 <li><p>更新GRID vGPU驱动</p>
 <p>通过License申请成功的邮件所提供的链接<a href="https://ui.licensing.nvidia.com" target="_blank" rel="noopener">NVIDIA License仪表盘</a> ，下载到vGPU/GRID驱动最新的软件包，如”NVIDIA-GRID-Windows-418.130-426.52.zip“，安装更新即可。</p>
