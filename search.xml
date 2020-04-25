@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello</title>
+    <url>/2020/04/06/Test/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>Test</tag>
+        <tag>Hello</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitHub+Hexo+NexT搭建个人网站全流程及魔改记录</title>
     <url>/2020/04/20/GitHub-Hexo-PersonalWebsite/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。</p>
@@ -455,18 +467,6 @@
         <tag>UE4</tag>
         <tag>PixelStreaming</tag>
         <tag>云渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello</title>
-    <url>/2020/04/06/Test/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Test</category>
-      </categories>
-      <tags>
-        <tag>Test</tag>
-        <tag>Hello</tag>
       </tags>
   </entry>
 </search>
