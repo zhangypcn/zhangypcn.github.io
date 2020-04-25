@@ -11,6 +11,206 @@
 <p>Hexo：一个高效的博客框架</p>
 <p>NexT：一个简约风格的网站主题</p>
 <p>GitHub提供了 <code>.github.io</code> 域，省去了自已去购买域名的金钱和精力。</p>
+<h1 id="Hexo开始使用"><a href="#Hexo开始使用" class="headerlink" title="Hexo开始使用"></a>Hexo开始使用</h1><ol>
+<li><p>创建远程仓库。注册GitHub账号，创建仓库，仓库命名为：用户名+ .github.io 后缀， <code>username.github.io</code></p>
+</li>
+<li><p>本地安装Git、NodeJS</p>
+</li>
+<li><p>安装Hexo。创建用来部署博客网站的文件夹，如 <code>D:\zhangypcn</code> ，安装Hexo，并初始化网站</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装Hexo</span></span><br><span class="line">npm install -g hexo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在当前文件夹初始化一个网站，也可以指定项目名：` hexo i blog `</span></span><br><span class="line">hexo init</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动服务器，默认情况下，访问网址为： http://localhost:4000</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 也可以指定端口启动服务 hexo s -p 5000</span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>本地测试</li>
+</ul>
+<img src="/2020/04/20/GitHub-Hexo-PersonalWebsite/Test.png" alt="Test" style="zoom:33%;">
+</li>
+<li><p>一键部署网站到远程仓库</p>
+<ul>
+<li><p>安装 <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开站点配置文件 <code>_config.yml</code> ，目录 <code>&quot;D:\zhangypcn\hexo\_config.yml&quot;</code> ，修改deploy字段，其repo项设置为远程仓库URL，branch项设置为master</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="comment">## repo：仓库（Repository）地址</span></span><br><span class="line"><span class="comment">## branch：分支名称</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:zhangypcn/zhangypcn.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成站点文件并推送至远程库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 执行 hexo clean 时，Hexo会清除缓存文件 (db.json) 和已生成的静态文件 (public)；</span><br><span class="line">// 执行 hexo generate时，Hexo会在 public 目录下生成网站静态文件；</span><br><span class="line">// 执行 hexo deploy 时，Hexo 会将 public 目录中的文件和目录推送至 _config.yml 中</span><br><span class="line">// 指定的远端仓库和分支中，并且完全覆盖该分支下的已有内容。</span><br><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在就可以通过仓库名作为域名来访问网站，如： <code>https://username.github.io</code> </p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="NexT主题配置"><a href="#NexT主题配置" class="headerlink" title="NexT主题配置"></a>NexT主题配置</h1><h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><ol>
+<li><p>下载主题至 Hexo 站点目录的themes文件夹下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开站点配置文件 <code>_config.yml</code> ，目录 <code>&quot;D:\zhangypcn\hexo\_config.yml&quot;</code> ，修改 theme 字段，设置为 next</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="修改主题样式"><a href="#修改主题样式" class="headerlink" title="修改主题样式"></a>修改主题样式</h2><ul>
+<li><p>打开 <strong>主题配置文件</strong>，目录 <code>&quot;D:\zhangypcn\hexo\themes\next\_config.yml&quot;</code> ，修改 Schemes 字段，设置喜欢的风格</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Next主题可选样式</span></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">## Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</span></span><br><span class="line"><span class="comment">## Mist - Muse 的紧凑版本，整洁有序的单栏外观</span></span><br><span class="line"><span class="comment">## Pisces - 双栏 Scheme，小家碧玉似的清新</span></span><br><span class="line"><span class="comment"># scheme: MUSE</span></span><br><span class="line"><span class="comment"># scheme: Mist</span></span><br><span class="line"><span class="comment"># scheme: Pisces</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Gemini</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><ul>
+<li><p>打开 <strong>站点配置文件</strong> <code>_config.yml</code> ，目录 <code>&quot;D:\zhangypcn\hexo\_config.yml&quot;</code> ，修改 <code>language</code> 字段</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">zh-Hans</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目前 NexT 支持的语言如以下表格所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">语言</th>
+<th align="left">代码</th>
+<th align="left">设定示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">English</td>
+<td align="left"><code>en</code></td>
+<td align="left"><code>language: en</code></td>
+</tr>
+<tr>
+<td align="left">简体中文</td>
+<td align="left"><code>zh-Hans</code></td>
+<td align="left"><code>language: zh-Hans</code></td>
+</tr>
+<tr>
+<td align="left">Français</td>
+<td align="left"><code>fr-FR</code></td>
+<td align="left"><code>language: fr-FR</code></td>
+</tr>
+<tr>
+<td align="left">Português</td>
+<td align="left"><code>pt</code></td>
+<td align="left"><code>language: pt</code> or <code>language: pt-BR</code></td>
+</tr>
+<tr>
+<td align="left">繁體中文</td>
+<td align="left"><code>zh-hk</code> 或者 <code>zh-tw</code></td>
+<td align="left"><code>language: zh-hk</code></td>
+</tr>
+<tr>
+<td align="left">Русский язык</td>
+<td align="left"><code>ru</code></td>
+<td align="left"><code>language: ru</code></td>
+</tr>
+<tr>
+<td align="left">Deutsch</td>
+<td align="left"><code>de</code></td>
+<td align="left"><code>language: de</code></td>
+</tr>
+<tr>
+<td align="left">日本語</td>
+<td align="left"><code>ja</code></td>
+<td align="left"><code>language: ja</code></td>
+</tr>
+<tr>
+<td align="left">Indonesian</td>
+<td align="left"><code>id</code></td>
+<td align="left"><code>language: id</code></td>
+</tr>
+<tr>
+<td align="left">Korean</td>
+<td align="left"><code>ko</code></td>
+<td align="left"><code>language: ko</code></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="设置菜单"><a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h2><blockquote>
+<p>新版本菜单内容的设置格式是： <code>Key: /link/||icon</code><br>其中 <code>Key</code> 是菜单项的默认名称，将用于匹配图标和翻译，如果此菜单的翻译可以在语言中找到，将加载此翻译；<code>link</code> 为目标链接； <code>icon</code> 为菜单项对应的图标/ <a href="http://fontawesome.io/" target="_blank" rel="noopener">Font Awesome</a> 图标的名称。</p>
+</blockquote>
+<ol>
+<li><p>设置菜单内容，打开 <strong>主题配置文件</strong>，目录 <code>&quot;D:\zhangypcn\hexo\themes\next\_config.yml&quot;</code> ，修改 menu 字段。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 主菜单</span></span><br><span class="line"><span class="string">menu</span> </span><br><span class="line">  <span class="comment">#注意||前后不要留空格，否则会加载至404页面</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/||tags</span></span><br><span class="line">  <span class="attr">Portfolio:</span> <span class="string">/Portfolio/||plug</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用菜单图标，打开主题配置文件，修改 <code>menu_icon</code> 字段</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Enable/Disable menu icons.</span></span><br><span class="line"><span class="attr">menu_icons:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置菜单项的显示文本。打开 NexT 主题目录下的 <code>languages/{language}.yml</code> 文件，（<code>{language}</code> 为网站所使用的语言）。以简体中文为例，若你需要添加一个菜单项，,则需要修改简体中文对应的翻译文件 <code>languages/zh-Hans.yml</code>，在 <code>menu</code> 字段下添加该项：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">标签</span></span><br><span class="line">  <span class="attr">Portfolio:</span> <span class="string">作品</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建菜单项目标文件。使用新建页面指令， <code>key_name</code> 为菜单项及页面名称，没有对应页面，点击菜单打开后为404页面</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 新建菜单项页面</span><br><span class="line">hexo new page key_name</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="设置侧边栏"><a href="#设置侧边栏" class="headerlink" title="设置侧边栏"></a>设置侧边栏</h2><ol>
+<li><p>设置侧栏的位置，打开 <strong>主题配置文件</strong>，修改 <code>sidebar.position</code> 字段</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="comment"># Sidebar Position, available value: left | right (only for Pisces | Gemini).</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">left</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置侧栏显示的时机，打开 <strong>主题配置文件</strong>，修改 <code>sidebar.display</code> 字段</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="comment"># Sidebar Display, available value (only for Muse | Mist):</span></span><br><span class="line">  <span class="comment">#  - post    expand on posts automatically. Default.</span></span><br><span class="line">  <span class="comment">#  - always  expand for all pages automatically</span></span><br><span class="line">  <span class="comment">#  - hide    expand only when click on the sidebar toggle icon.</span></span><br><span class="line">  <span class="comment">#  - remove  Totally remove sidebar including sidebar toggle.</span></span><br><span class="line">  <span class="attr">display:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h2><ul>
+<li><p>打开 <strong>主题配置文件</strong>，修改字段 <code>avatar</code> </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">avatar:</span> <span class="string">/images/custom/zhang.png</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="网站其他设置"><a href="#网站其他设置" class="headerlink" title="网站其他设置"></a>网站其他设置</h1><ul>
+<li><p>打开 <strong>站点配置文件</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>title</code></td>
+<td align="left">网站标题</td>
+</tr>
+<tr>
+<td align="left"><code>subtitle</code></td>
+<td align="left">网站副标题</td>
+</tr>
+<tr>
+<td align="left"><code>description</code></td>
+<td align="left">网站描述</td>
+</tr>
+<tr>
+<td align="left"><code>keywords</code></td>
+<td align="left">网站的关键词。使用半角逗号 <code>,</code> 分隔多个关键词。</td>
+</tr>
+<tr>
+<td align="left"><code>author</code></td>
+<td align="left">您的名字</td>
+</tr>
+<tr>
+<td align="left"><code>language</code></td>
+<td align="left">网站使用的语言。</td>
+</tr>
+<tr>
+<td align="left"><code>timezone</code></td>
+<td align="left">网站时区。Hexo 默认使用电脑的时区。其他时区如 <code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。一般的，对于中国大陆地区可以使用 <code>Asia/Shanghai</code>。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1 id="主题其他设置"><a href="#主题其他设置" class="headerlink" title="主题其他设置"></a>主题其他设置</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 友情链接</span></span><br><span class="line">Links </span><br><span class="line"><span class="meta">#</span><span class="bash"> 建站时间</span></span><br><span class="line">since</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加文章更新时间</span></span><br><span class="line">updated_at</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加站点访问统计</span></span><br><span class="line">busuanzi_count</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加社交账号</span></span><br><span class="line">social</span><br></pre></td></tr></table></figure>
+
+<h1 id="更新文章"><a href="#更新文章" class="headerlink" title="更新文章"></a>更新文章</h1><ul>
+<li><p>新建文章</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new 'my-blog'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文章在首页显示 <code>阅读全文</code>  效果</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 在文章合适的位置添加</span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- more --&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文章添加标题、更新时间、分类、版权声明、标签和其他属性，在文章开头添加以下内容</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: GitHub+Hexo+NexT搭建个人网站全流程及魔改记录</span><br><span class="line">date: 2020-04-20 14:00:00</span><br><span class="line">categories: Hexo</span><br><span class="line">copyright: true</span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">	- </span>GitHub Pages</span><br><span class="line"><span class="bullet">	- </span>Hexo</span><br><span class="line"><span class="bullet">	- </span>NexT</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
 <h1 id="文章版权声明"><a href="#文章版权声明" class="headerlink" title="文章版权声明"></a>文章版权声明</h1><h2 id="添加版权声明"><a href="#添加版权声明" class="headerlink" title="添加版权声明"></a>添加版权声明</h2><ol>
 <li><p>修改主题配置文件，关键词：post_copyright，设置 enable 为 true </p>
 <p><strong>目录：</strong> <code>.\yourWebsiteRootDir\themes\next\_config.yml</code></p>
@@ -36,10 +236,6 @@
 </li>
 <li><p>文章添加前置内容copyright，若不需要版权声明，则设置为false，或者不加此项</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">XXX</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020</span><span class="number">-04</span><span class="number">-20</span> <span class="number">14</span><span class="string">:00:00</span></span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
-
-
-
-
 
 
 
