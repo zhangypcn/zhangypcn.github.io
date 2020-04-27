@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello</title>
-    <url>/2020/04/06/Test/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Test</category>
-      </categories>
-      <tags>
-        <tag>Test</tag>
-        <tag>Hello</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GitHub+Hexo+NexT搭建个人网站全流程及魔改记录</title>
     <url>/2020/04/20/GitHub-Hexo-PersonalWebsite/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。</p>
@@ -268,6 +256,49 @@
       </tags>
   </entry>
   <entry>
+    <title>过期蓝图是万恶之源</title>
+    <url>/2020/04/28/Package-BuildCookRun-Error/</url>
+    <content><![CDATA[<p>打包时遇到莫名的问题需要单独排查，首先排查Game模式（Debug/Development）源码编译能否通过，其次检查内容文件，尤其是蓝图，<strong>一些错误的蓝图文件即使项目中没有任何引用，也可以引起致命的错误！</strong></p>
+<p>折腾到凌晨的教训，值得一记。</p>
+]]></content>
+      <categories>
+        <category>Unreal Engine</category>
+      </categories>
+      <tags>
+        <tag>UE4</tag>
+        <tag>Error</tag>
+        <tag>Package</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UE4 构建解析——烘培、打包、部署、运行</title>
+    <url>/2020/04/28/Package-UAT-BuildCookRun/</url>
+    <content><![CDATA[<p><a href="https://docs.unrealengine.com/zh-CN/Engine/Deployment/BuildOperations/index.html" target="_blank" rel="noopener">docs.UnrealEngine: 构建操作：烘焙，打包，部署与运行</a></p>
+<p>从项目启动器启动配置文件，验证描述文件设置后，首先执行 Launching UAT… ，<strong>UAT</strong> 是UE4在封装过程所使用的自动化工具（Unreal Automation Tool），用于通过各种实用程序脚本来处理 UE4 项目。对于封装过程，UAT使用特定的命令 <strong>BuildCookRun</strong> 来打包项目。</p>
+<p>在启动 UAT 之后经历了编译、烘培、部署、启动、清理几个阶段，这实际上也是中 BuildCookRun 命令的组成部分，具体封装流程为<strong>构建（Build）、转化（Cook）、暂存（Stage）、打包（Package）、部署（deploy）、运行（Run）</strong>。</p>
+<ul>
+<li>构建（Build）：该阶段将为所选择的平台编译重组文件。</li>
+<li>转化（Cook）：该阶段通过在特殊模式下执行编辑器来转化内容。</li>
+<li>暂存（Stage）：该阶段将重新文件和内容复制到暂存区，它是开发目录之外的独立目录。</li>
+<li>打包（Package）：该阶段将项目打包成平台原生的发行格式。</li>
+<li>部署（Deploy）：该阶段将部署版本部署到目标设备。</li>
+<li>运行（Run）：该阶段在目标平台上启动已封装的项目。</li>
+</ul>
+<p>所以，在打包过程中遇到问题，就可以在按以上不同的阶段去分类，从而有目标的解决。</p>
+<p>一般情况下，若由于程序的原因打包失败，可以在VS解决方案<strong>Game模式</strong>下（Debug或Development）调试运行来定位问题。</p>
+<p>有一些情况下，工程内容中一些<strong>有问题的蓝图文件</strong>没有删除，即使没有引用，也可以引起致命的错误。</p>
+]]></content>
+      <categories>
+        <category>Unreal Engine</category>
+      </categories>
+      <tags>
+        <tag>UE4</tag>
+        <tag>Package</tag>
+        <tag>BuildCookRun</tag>
+        <tag>UAT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PixelStreaming 局域网及公有云部署全流程记录</title>
     <url>/2020/04/10/PixelStreaming-Deployment/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于PixelStreaming开发和部署全流程的记录，从开发者角度分析探讨像素流送技术以及部署过程中遇到的问题，希望能为其他开发者带来帮助或者解决实际问题，偶尔也会有补充和更新，希望同样关注PixelStreaming技术的朋友与我交流。</p>
@@ -467,6 +498,18 @@
         <tag>UE4</tag>
         <tag>PixelStreaming</tag>
         <tag>云渲染</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello</title>
+    <url>/2020/04/06/Test/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>Test</tag>
+        <tag>Hello</tag>
       </tags>
   </entry>
 </search>
