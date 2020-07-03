@@ -256,6 +256,32 @@
       </tags>
   </entry>
   <entry>
+    <title>过期蓝图是万恶之源</title>
+    <url>/2020/04/28/Package-BuildCookRun-Error/</url>
+    <content><![CDATA[<p>打包时遇到莫名的问题需要单独排查，首先排查Game模式（Debug/Development）源码编译能否通过，其次检查内容文件，尤其是蓝图，<strong>一些错误的蓝图文件即使项目中没有任何引用，也可以引起致命的错误！</strong></p>
+<p>折腾到凌晨的教训，值得一记。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>Unreal Engine</category>
+      </categories>
+      <tags>
+        <tag>UE4</tag>
+        <tag>Error</tag>
+        <tag>Package</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My PC Config 2020</title>
+    <url>/2020/06/26/My-PC-Config-2020/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>UE4</tag>
+        <tag>PixelStreaming</tag>
+        <tag>云渲染</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>UE4 构建解析——烘培、打包、部署、运行</title>
     <url>/2020/04/28/Package-UAT-BuildCookRun/</url>
     <content><![CDATA[<p>从项目启动器启动配置文件，验证描述文件设置后，首先执行 Launching UAT… ，<strong>UAT</strong> 是UE4在封装过程所使用的自动化工具（Unreal Automation Tool），用于通过各种实用程序脚本来处理 UE4 项目。对于封装过程，UAT使用特定的命令 <strong>BuildCookRun</strong> 来打包项目。</p>
@@ -286,32 +312,6 @@
         <tag>Package</tag>
         <tag>BuildCookRun</tag>
         <tag>UAT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>My PC Config 2020</title>
-    <url>/2020/06/26/My-PC-Config-2020/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>UE4</tag>
-        <tag>PixelStreaming</tag>
-        <tag>云渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>过期蓝图是万恶之源</title>
-    <url>/2020/04/28/Package-BuildCookRun-Error/</url>
-    <content><![CDATA[<p>打包时遇到莫名的问题需要单独排查，首先排查Game模式（Debug/Development）源码编译能否通过，其次检查内容文件，尤其是蓝图，<strong>一些错误的蓝图文件即使项目中没有任何引用，也可以引起致命的错误！</strong></p>
-<p>折腾到凌晨的教训，值得一记。</p>
-<hr>
-]]></content>
-      <categories>
-        <category>Unreal Engine</category>
-      </categories>
-      <tags>
-        <tag>UE4</tag>
-        <tag>Package</tag>
-        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -346,7 +346,7 @@
 <p>上传源码后发现相较于本地的文件，文件夹node_modules、public、文件db.json并未上传至远程仓库，这些文件在执行hexo g -d 指令后会自动生成。</p>
 </blockquote>
 <ol start="5">
-<li>最后确认站点配置文件 <code>_config.yml</code> 的<strong>deploy</strong>字段的branch设置为master，这样保证了执行 <code>hexo g -d</code> 时将博客部署至GitHub仓库的主分支上，后续只需手动更新hexo分支即可。</li>
+<li>最后确认站点配置文件 <code>_config.yml</code> 的<strong>deploy</strong>字段的branch设置为master，这样保证了执行 <code>hexo g -d</code> 时将博客部署至GitHub仓库的主分支上，后续只需使用Git命令手动更新hexo分支即可。</li>
 </ol>
 <hr>
 <p><strong>参考链接</strong></p>
