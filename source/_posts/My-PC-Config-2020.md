@@ -1,12 +1,11 @@
 ---
-title: My PC Config 2020
+title: 2020我的主机配置分享
 date: 2020-06-26 00:12:17
-categories: 
+categories: PC
 copyright: true
 tags: 
-	- UE4
-	- PixelStreaming
-	- 云渲染
+	- PC
+	- 电脑硬件
 ---
 
 
