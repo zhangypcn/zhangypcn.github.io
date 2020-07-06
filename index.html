@@ -385,7 +385,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-06T23:04:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-06T23:12:13+08:00">
                 2020-07-06
               </time>
             
@@ -442,27 +442,15 @@
 
       
         
-          
-            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>使用 Visual Studio 2019 编译 UE4.24源码时报错，PhysX库编译不通过，具体报错信息为：</p>
+          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>使用 Visual Studio 2019 编译 UE4.24源码时报错，PhysX库编译不通过，具体报错信息为：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"D:\UnrealEngine\Engine\Source\ThirdParty\PhysX3\PxShared\src\foundation\include\PsAllocator.h"</span>：</span><br><span class="line">typeinfo.h: No such file <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure>
-
-<p>对于此类报错，Microsoft开发者回复是MSVC14.23版本移除了typeinfo.h，改用<typeinfo>即可，VS2019安装信息显示已安装MSVC14.26，显然MSVC4.23以后都有此问题。按其建议修改后，仍会有其他编译错误。而且修改源码的方式不太友好。</typeinfo></p>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
-<li><p>使用VS2019的Installer，安装MSVC4.23版本以前的运行库，如MSVC14.22.27905。</p>
-</li>
-<li><p>修改UE4源码的配置文件: <code>&quot;D:\UnrealEngine\Engine\Saved\UnrealBuildTool\BuildConfiguration.xml&quot;</code><br>添加以下代码：</p>
-</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">WindowsPlatform</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">CompilerVersion</span>&gt;</span>14.22.27905<span class="tag">&lt;/<span class="name">CompilerVersion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">WindowsPlatform</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后BuildConfiguration.xml如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Configuration</span> <span class="attr">xmlns</span>=<span class="string">"https://www.unrealengine.com/BuildConfiguration"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">WindowsPlatform</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">CompilerVersion</span>&gt;</span>14.22.27905<span class="tag">&lt;/<span class="name">CompilerVersion</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">WindowsPlatform</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>最后按常规步骤编译即可。</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/06/VS2019-Compile-UE4-Source-Code-Error/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

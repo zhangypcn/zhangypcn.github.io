@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2020我的主机配置分享</title>
+    <url>/2020/06/26/My-PC-Config-2020/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>PC</category>
+      </categories>
+      <tags>
+        <tag>PC</tag>
+        <tag>电脑硬件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitHub+Hexo+NexT搭建个人网站全流程及魔改记录</title>
     <url>/2020/04/20/GitHub-Hexo-PersonalWebsite/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇是关于利用GitHub Pages服务，使用Hexo框架以及NexT主题搭建个人网站的全流程的记录，本着高效工作的原则做了一些自定义修改来优化个人网站。</p>
@@ -253,18 +265,6 @@
         <tag>GitHub Pages</tag>
         <tag>Hexo</tag>
         <tag>NexT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2020我的主机配置分享</title>
-    <url>/2020/06/26/My-PC-Config-2020/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>PC</category>
-      </categories>
-      <tags>
-        <tag>PC</tag>
-        <tag>电脑硬件</tag>
       </tags>
   </entry>
   <entry>
@@ -582,6 +582,8 @@
     <url>/2020/07/06/VS2019-Compile-UE4-Source-Code-Error/</url>
     <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>使用 Visual Studio 2019 编译 UE4.24源码时报错，PhysX库编译不通过，具体报错信息为：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="string">"D:\UnrealEngine\Engine\Source\ThirdParty\PhysX3\PxShared\src\foundation\include\PsAllocator.h"</span>：</span><br><span class="line">typeinfo.h: No such file <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>对于此类报错，Microsoft开发者回复是MSVC14.23版本移除了typeinfo.h，改用<typeinfo>即可，VS2019安装信息显示已安装MSVC14.26，显然MSVC4.23以后都有此问题。按其建议修改后，仍会有其他编译错误。而且修改源码的方式不太友好。</typeinfo></p>
 <h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
