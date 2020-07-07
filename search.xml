@@ -319,7 +319,7 @@
   <entry>
     <title>个人网站Hexo源码管理——便于换设备时更新博客</title>
     <url>/2020/07/04/Personal-Website-Hexo-Source-Management/</url>
-    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇记录了我在跟换主力机后，更新博客时发现需要从原来的电脑Copy博客源码，这种行为让我我觉得有一丝丝复古，为了避免再次进行这种让人不快的操作，我将网站Hexo源码上传到了GitHub仓库管理，以下记录了操作的流程和细节。</p>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇记录了我在跟换主力机后，更新博客时发现需要从原来的电脑Copy博客源码，这种行为让我觉得有一丝丝复古，为了避免再次进行这种让人不快的操作，我将网站Hexo源码上传到了GitHub仓库管理，以下记录了操作的流程和细节。</p>
 <a id="more"></a>
 
 <h1 id="Hexo源码管理"><a href="#Hexo源码管理" class="headerlink" title="Hexo源码管理"></a>Hexo源码管理</h1><ol>
@@ -566,27 +566,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello</title>
-    <url>/2020/04/06/Test/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Test</category>
-      </categories>
-      <tags>
-        <tag>Test</tag>
-        <tag>Hello</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Visual Studio 2019 编译 UE4.24 源码不通过问题解决</title>
     <url>/2020/07/06/VS2019-Compile-UE4-Source-Code-Error/</url>
-    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>使用 Visual Studio 2019 编译 UE4.24源码时报错，PhysX库编译不通过，具体报错信息为：</p>
+    <content><![CDATA[<h1 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h1><ul>
+<li><strong>找不到头文件typeinfo</strong></li>
+</ul>
+<p>使用 Visual Studio 2019 编译 UE4.24源码时报错，PhysX库编译不通过，具体报错信息为：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="string">"D:\UnrealEngine\Engine\Source\ThirdParty\PhysX3\PxShared\src\foundation\include\PsAllocator.h"</span>：</span><br><span class="line">typeinfo.h: No such file <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
 <p>对于此类报错，Microsoft开发者回复是MSVC14.23版本移除了typeinfo.h，改用<typeinfo>即可，VS2019安装信息显示已安装MSVC14.26，显然MSVC4.23以后都有此问题。按其建议修改后，仍会有其他编译错误。而且修改源码的方式不太友好。</typeinfo></p>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li><strong>修改引擎配置文件</strong></li>
+</ul>
+<ol>
 <li><p>使用VS2019的Installer，安装MSVC4.23版本以前的运行库，如MSVC14.22.27905。</p>
 </li>
 <li><p>修改UE4源码的配置文件: <code>&quot;D:\UnrealEngine\Engine\Saved\UnrealBuildTool\BuildConfiguration.xml&quot;</code><br>添加以下代码：</p>
@@ -598,8 +592,25 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Configuration</span> <span class="attr">xmlns</span>=<span class="string">"https://www.unrealengine.com/BuildConfiguration"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">WindowsPlatform</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">CompilerVersion</span>&gt;</span>14.22.27905<span class="tag">&lt;/<span class="name">CompilerVersion</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">WindowsPlatform</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol start="3">
-<li>最后按常规步骤编译即可。</li>
+<li>Generate后编译即可。</li>
 </ol>
+<h1 id="错误2"><a href="#错误2" class="headerlink" title="错误2"></a>错误2</h1><ul>
+<li><strong>error C4800</strong></li>
+</ul>
+<p>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\INCLUDE\comip.h(311): error C4800</p>
+<h2 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li><strong>修改引擎源码</strong></li>
+</ul>
+<p>cs文件： <code>.\Engine\Source\Programs\UnrealBuildTool\Platform\Windows\VCToolChain.cs</code> </p>
+<p>第514行之后加一句 <code>Arguments.Add(&quot;/wd4800&quot;);</code> </p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AppendCLArguments_CPP</span>(<span class="params">CppCompileEnvironment CompileEnvironment, List&lt;<span class="keyword">string</span>&gt; Arguments</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Target.WindowsPlatform.Compiler != WindowsCompiler.Clang)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// Explicitly compile the file as C++.</span></span><br><span class="line">		Arguments.Add(<span class="string">"/TP"</span>);</span><br><span class="line">        Arguments.Add(<span class="string">"/wd4800"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	    ...</span><br></pre></td></tr></table></figure>
+
+<p>最后Generate后编译即可。</p>
+<hr>
+<p>参考链接</p>
+<p><a href="https://blog.csdn.net/sajiazaici/article/details/102911466/" target="_blank" rel="noopener">UE4导入插件后编译无法通过，提示缺少typeinfo.h</a></p>
+<p><a href="https://blog.csdn.net/weixin_43030629/article/details/104947160" target="_blank" rel="noopener">UE4源码编译错误处理，error MSB3075，error C4800</a></p>
+<hr>
 ]]></content>
       <categories>
         <category>Unreal Engine</category>
@@ -608,6 +619,18 @@
         <tag>UE4</tag>
         <tag>Visual Studio 2019</tag>
         <tag>编译问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello</title>
+    <url>/2020/04/06/Test/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>Test</tag>
+        <tag>Hello</tag>
       </tags>
   </entry>
 </search>
