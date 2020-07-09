@@ -597,24 +597,6 @@
       </tags>
   </entry>
   <entry>
-    <title>解决Oculus驱动无法登录问题</title>
-    <url>/2020/07/08/Solve-the-Problem-that-Oculus-Driver-Cannot-Login/</url>
-    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>Oculus驱动在科学上网后仍无法登录，可以尝试通过更改hosts文件解决。</p>
-<a id="more"></a>
-
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>在hosts文件尾（ <code>C:\Windows\System32\drivers\etc</code> 目录下）添加以下内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">157.240.11.49 graph.oculus.com</span><br><span class="line">157.240.11.49 www2.oculus.com</span><br><span class="line">157.240.8.49 scontent.oculuscdn.com</span><br><span class="line">157.240.8.49 securecdn.oculus.com</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Oculus</category>
-      </categories>
-      <tags>
-        <tag>Oculus</tag>
-        <tag>hosts</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Visual Studio 2019 编译 UE4.24 源码不通过问题解决</title>
     <url>/2020/07/06/VS2019-Compile-UE4-Source-Code-Error/</url>
     <content><![CDATA[<h1 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h1><ul>
