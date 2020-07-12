@@ -14,7 +14,7 @@ tags:
 
 <!--more-->
 
-图片周末上传——
+<img src="PC1.JPG" alt="My PC" style="zoom:20%;" />
 
 # CPU
 ​	英特尔（inter） i9-9900K 3.6GHz 8核16线程 ￥2999 （实付￥2969）
