@@ -53,9 +53,9 @@ UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工
 
 2. 运行SignallingWeb服务器
 
-   **目录：** ` \Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat `
+   **目录：** ` \Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\run.bat `
 
-   **启动参数：** `  --publicIp 127.0.0.1（此IP为客户端访问地址，根据情况修改，如公网：--publicIp 49.xx.xx.42） `
+   **启动参数：** `  --publicIp 127.0.0.1（此IP为客户端访问地址，可根据情况修改，如局域网IP：--publicIp 192.xx.xx.3） `
 
 3. 运行应用程序实例
 
@@ -71,9 +71,9 @@ UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工
 
 1. 运行SignallingWeb服务器
 
-   **目录：** ` \Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\runAWS_WithTURN.bat `
+   **目录：** ` \Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\run.bat `
 
-2. 运行应用程序实例（PixelStreamingIP为客户端访问地址，根据情况修改，如公网：-PixelStreamingIP=49.xx.xx.42）
+2. 运行应用程序实例（PixelStreamingIP为客户端访问地址，可根据情况修改，如局域网IP：-PixelStreamingIP=192.xx.xx.3）
 
    **目录：** ` /WindowsNoEditor/PixelStreamingDemo.exe `
 
@@ -91,11 +91,11 @@ UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工
 
 * **UE4.24之后版本：**
 
-1. 启动Matchmaker/run.bat
+1. 启动Matchmaker / run.bat
 
    **启动参数**（默认为90/9999，启动时可不加参数）： ` --httpPort 90 --matchmakerPort 9999 `
 
-2. 启动SignallingWebServer_run.bat
+2. 启动SignallingWebServer / run.bat
 
    **启动参数**（streamerPort=8888为默认）：
 
@@ -179,21 +179,27 @@ UE4.24版本开始，PixelStreaming不需要启动WebRTC代理服务器，其工
 
    <img src="vGPU369.jpg" alt="华为云提供的vGPU驱动版本安装" style="zoom:50%;" />
 
-* **步骤2、3只为了下载到vGPU/GRID最新驱动，若有其他方式获取到GRID最新驱动软件包可忽略此步骤**
+* **步骤a、b是我最开始安装vGPU/GRID最新驱动的步骤记录，这些步骤其实是不需要的，通过 [NVIDIA官网驱动程序下载入口](https://www.nvidia.cn/Download/index.aspx?lang=cn) 获取到的GRID最新驱动软件包就可以（未测试）**
 
-2. 申请GRID/vGPU驱动License
+* **重要说明：** N卡的图形功能不需要License，仅计算功能需要License，PixelStreaming只用到视频编码，不需要计算功能，所以没必要配置License。在这之前我并不知道这一点，所以去申请了License，进而配置License服务器，走了一些弯路。虽然对于PixelStreaming来说不需要，不过关于获取vGPU/GRID驱动 License、安装License Server、配置License等详细步骤以及问题解决我将会在另一篇文章说明，提供给有需要的朋友参考。
 
-   有申请License的步骤是因为，我只知道这一种获取最新的驱动软件包的方式，就是通过申请License的方式获得NVIDIA邮件提供的链接，进入License Dashboard下载。
+  > a. 申请GRID/vGPU驱动License
+  >
+  > 有申请License的步骤是因为，我只知道这一种获取最新的驱动软件包的方式，就是通过申请License的方式获得NVIDIA邮件提供的链接，进入License Dashboard下载。
+  >
+  > [NVIDIA官网申请GRID驱动的免费License](https://enterpriseproductregistration.nvidia.com/?LicType=EVAL&ProductFamily=vGPU) （申请需要企业邮箱）
+  >
+  > b. 更新GRID vGPU驱动
+  >
+  > 通过License申请成功的邮件所提供的链接[NVIDIA License仪表盘](https://ui.licensing.nvidia.com) ，下载到vGPU/GRID驱动最新的软件包，如”NVIDIA-GRID-Windows-418.130-426.52.zip“，安装更新即可。
 
-   [NVIDIA官网申请GRID驱动的免费License](https://enterpriseproductregistration.nvidia.com/?LicType=EVAL&ProductFamily=vGPU) （申请需要企业邮箱）
+2. 下载更新GRID vGPU驱动
 
-   **重要说明：** N卡的图形功能不需要License，仅计算功能需要License，PixelStreaming只用到视频编码，不需要计算功能，所以没必要配置License。在这之前我并不知道这一点，所以走了很多弯路。虽然对于PixelStreaming来说不需要，不过关于获取vGPU/GRID驱动 License、安装License Server、配置License等详细步骤以及问题解决我将会在另一篇文章说明，提供给有需要的朋友参考。
+   通过 [NVIDIA官网驱动程序下载入口](https://www.nvidia.cn/Download/index.aspx?lang=cn) 搜索获取到的GRID最新驱动软件包，下载更新即可**（未测试）**
 
-3. 更新GRID vGPU驱动
+   <img src="vGPU Download.jpg" alt="vGPU Download" style="zoom:50%;" />
 
-   通过License申请成功的邮件所提供的链接[NVIDIA License仪表盘](https://ui.licensing.nvidia.com) ，下载到vGPU/GRID驱动最新的软件包，如”NVIDIA-GRID-Windows-418.130-426.52.zip“，安装更新即可。
-
-4. 到此，运行Unreal Engine4.24 PixelStreaming应用程序实例，运行正常，没有报错。
+3. 到此，运行Unreal Engine4.24 PixelStreaming应用程序实例，运行正常，没有报错。
 
 ## 单个实例配置
 
